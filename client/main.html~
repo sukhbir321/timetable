@@ -23,10 +23,10 @@
     <form class="form">
 <label> teacher </label>
 
-        Name<input type="text" name="teachername"/>
-        Department<input type="text" name="deptt"/>
-        code<input type="number" name="code"/>
-        shortname<input type="text" name="shortname"/>
+        Name<input type="text" name="teachername" required>
+        Department<input type="text" name="deptt" required>
+        code<input type="number" name="code" required>
+        shortname<input type="text" name="shortname" required>
        <input type="submit" id="submit"/>
 
 
@@ -47,10 +47,10 @@
 <form class="form">
 <label> subject </label>
 
-        Name<input type="text" name="subjectname"/>
-        code<input type="number" name="code"/>
-        Department<input type="text" name="deptt" value={{selectedDeptt}}/>
-        shortname<input type="text" name="shortname"/>
+        Name<input type="text" name="subjectname" required>
+        code<input type="number" name="code" required>
+        Department<input type="text" name="deptt" value={{selectedDeptt}} required>
+        shortname<input type="text" name="shortname" required>
        <input type="submit" id="submit"/>
     </form>
 <table>
@@ -75,23 +75,34 @@
 		{{#each sTeacherData}}
 		<option value="{{name}}">{{shortname}} </option>
 		{{/each}}
+	<select name="subject">
+                
 	</select>
+	</select>
+
 </template>
 
 <template name="room">
 <form id="form" class="form-control half-width-input">
 <label> room </label>
 
-        number<input type="varchar" name="roomnumber" class="half-width-input"/>
+        number<input type="varchar" name="roomnumber" class="half-width-input" required>
         
-        Department<input type="text" name="deptt" class="half-width-input"/>
+        Department<input type="text" name="deptt" class="half-width-input" required>
         
-        Type<input type="text" name="type" class="half-width-input"/>
+        Type<input type="text" name="type" class="half-width-input" required>
        <input type="submit" id="submit" class="btn btn-raised btn-primary">
-{{> calldeptt}}
-{{> calltype}}
 
     </form>
+<table>
+	{{#each roomData}}
+		<tr>
+		<td  style="border:1px solid #000;">{{room}}</td>
+		<td style="border:1px solid #000;">{{department}}</td>
+		<td style="border:1px solid #000;">{{type}} </td>
+		</tr>
+	{{/each}}
+</table>
 </template>
 
 <template name="calldeptt">
@@ -150,21 +161,38 @@
 <template name="sr">
 <form class="form">
 <label> sr</label>
-subject<input type="text" name="subject">
-type<input tye="text" name="type">
-room<input type="text" name="room">
-<input type="submit" id="submit"/>
+subject<input type="text" name="subject" required>
+type<input tye="text" name="type" required>
+room<input type="text" name="room" required>
+<input type="submit" id="submit" required>
 </form>
-
+<table>
+	{{#each srData}}
+		<tr>
+		<td  style="border:1px solid #000;">{{subject}}</td>
+		<td style="border:1px solid #000;">{{room}}</td>
+		<td style="border:1px solid #000;">{{type}} </td>
+		</tr>
+	{{/each}}
+</table>
 </template>
 <template name="ts">
 <form class="form">
 <label> ts</label>
-teacher<input type="text" name="teacher">
-code<input tye="text" name="code">
-subject<input type="text" name="subject">
+teacher<input type="text" name="teacher" required>
+code<input tye="text" name="code"required>
+subject<input type="text" name="subject" required>
 <input type="submit" id="submit"/>
 </form>
+<table>
+	{{#each tsData}}
+		<tr>
+		<td  style="border:1px solid #000;">{{teacher}}</td>
+		<td style="border:1px solid #000;">{{code}}</td>
+		<td style="border:1px solid #000;">{{subject}} </td>
+		</tr>
+	{{/each}}
+</table>
 </template>
 
 <template name="roomalot">

@@ -56,6 +56,13 @@ console.log(type);
 
 });
 
+Template.room.helpers({
+roomData:function(){
+return room.find();
+}
+});
+
+
 Template.sr.events({
 'submit .form':function(event,template){
 event.preventDefault();
@@ -68,6 +75,12 @@ console.log(type);
 console.log(room);
 }
 });
+Template.sr.helpers({
+srData:function(){
+return sr.find();
+}
+});
+
 Template.ts.events({
 'submit .form':function(event,template){
 event.preventDefault();
@@ -75,9 +88,15 @@ var teacher=event.target.teacher.value;
 var code=event.target.code.value;
 var subject=event.target.subject.value;
 Meteor.call('ts',teacher,code,subject);
-document.write(teacher);
-alert(code);
-document.write(subject);
+console.log(teacher);
+console.log(code);
+console.log(subject);
+}
+});
+
+Template.ts.helpers({
+tsData:function(){
+return ts.find();
 }
 });
 
