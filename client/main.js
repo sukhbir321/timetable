@@ -156,7 +156,60 @@ Template.createTimeTable.events({
 'click #submit':function(){
 var choosendeptt=$('#teacherTextbox').val();
 Session.set('choosendeptt', choosendeptt);
+},
+
+'click #createBtn':function(){
+	 timetabl=  { monday: [], tuesday: [], wednesday: [], thrusday: [], friday: [] };
+	var data = { department: "", year: "", timetable : timetabl };
+	var mondays = $(".monday input");
+	var i=0;
+	mondays.each(function(){ 
+		var val = $(this).val();
+		timetabl.monday[i] = val;
+		i++;
+	});
+
+
+	var mondays = $(".tuesday input");
+	var i=0;
+	mondays.each(function(){ 
+		var val = $(this).val();
+		timetabl.tuesday[i] = val;
+		i++;
+	});
+
+
+	var mondays = $(".wednesday input");
+	var i=0;
+	mondays.each(function(){ 
+		var val = $(this).val();
+		timetabl.wednesday[i] = val;
+		i++;
+	});
+
+	var mondays = $(".thrusday input");
+	var i=0;
+	mondays.each(function(){ 
+		var val = $(this).val();
+		timetabl.thrusday[i] = val;
+		i++;
+	});
+
+
+	var mondays = $(".friday input");
+	var i=0;
+	mondays.each(function(){ 
+		var val = $(this).val();
+		timetabl.friday[i] = val;
+		i++;
+	});
+
+	data.department = $("#deptt").val();
+	data.department = $('#year').val();
+	timetable.insert(data);
+	
 }
+
 });
 Template.createTimeTable.helpers({
 'sTeacherData':function(){

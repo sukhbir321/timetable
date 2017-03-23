@@ -5,18 +5,13 @@
 <body>
 
 {{> form}}
-{{> createTimeTable}}
 </body>
 
 <template name="form">
 <ul class="nav nav-pills nav-justified navbar-fixed-top">
-    <li role="presentation"><a href="#">first</a></li>
       <li role="presentation"><a href="/formTemplate">teacher</a></li>
       <li role="presentation"><a href="/subject">subject</a></li>
       <li role="presentation"><a href="/room">room</a></li>
-      <li role="presentation"><a href="/ts">ts</a></li>
-      <li role="presentation"><a href="/sr">sr</a></li>
-      <li role="presentation"><a href="/roomalot">roomalot</a></li>
 </ul>
 </template>
 <template  name="formTemplate">
@@ -67,19 +62,69 @@
 
 
 <template name="createTimeTable">
-<label> Department </label>
+<!-- <label> Department </label>
 <input type="text" name="teacherTextbox" id="teacherTextbox">
 <input type="button" id="submit" value="Go">
 	<label>List of teachers</label>
 	<select name="teachers">
 		{{#each sTeacherData}}
-		<option value="{{name}}">{{shortname}} </option>
+		<option value="{{name}}">{{name}} </option>
 		{{/each}}
-	<select name="subject">
-                
-	</select>
-	</select>
+	</select>-->
 
+	<input type='text' id='deptt' placeholder='department'>
+	<input type='year' id='year' placeholder='year'>
+	<div class="column monday">
+	<p>Monday</p>
+	<input type="text">
+	<input type="text">
+	<input type="text">
+	<input type="text">
+	<input type="text">
+	<input type="text">
+	<input type="text">
+	</div>
+	<div class="column tuesday">
+	<p>Tuesday</p>
+	<input type="text">
+	<input type="text">
+	<input type="text">
+	<input type="text">
+	<input type="text">
+	<input type="text">
+	<input type="text">
+	</div>
+	<div class="column wednesday">
+	<p>Wednesday</p>
+	<input type="text">
+	<input type="text">
+	<input type="text">
+	<input type="text">
+	<input type="text">
+	<input type="text">
+	<input type="text">
+	</div>
+	<div class="column thrusday">
+	<p>Thrusday</p>
+	<input type="text">
+	<input type="text">
+	<input type="text">
+	<input type="text">
+	<input type="text">
+	<input type="text">
+	<input type="text">
+	</div>
+	<div class="column friday">
+	<p>Friday</p>
+	<input type="text">
+	<input type="text">
+	<input type="text">
+	<input type="text">
+	<input type="text">
+	<input type="text">
+	<input type="text">
+	</div>
+	<button id="createBtn">Create</button>
 </template>
 
 <template name="room">

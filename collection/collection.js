@@ -4,3 +4,4 @@ room=new Mongo.Collection('room');
 sr=new Mongo.Collection('sr');
 ts=new Mongo.Collection('ts');
 roomalot=new Mongo.Collection('roomalot');
+timetable = new Mongo.Collection('timetable');

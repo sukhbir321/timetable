@@ -8,6 +8,11 @@ action: function(){
 	BlazeLayout.render("formTemplate");
 }
 });
+FlowRouter.route('/create',{
+action: function(){
+	BlazeLayout.render("createTimeTable");
+}
+});
 FlowRouter.route('/subject',{
 action: function(){
 	BlazeLayout.render("subject");
