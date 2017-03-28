@@ -9,9 +9,11 @@
 
 <template name="form">
 <ul class="nav nav-pills nav-justified navbar-fixed-top">
-      <li role="presentation"><a href="/formTemplate">teacher</a></li>
-      <li role="presentation"><a href="/subject">subject</a></li>
-      <li role="presentation"><a href="/room">room</a></li>
+      <li role="presentation"><a href="/formTemplate">Insert teacher</a></li>
+      <li role="presentation"><a href="/subject">Insert subject</a></li>
+      <li role="presentation"><a href="/room">Insert room</a></li>
+      <li role="presentation"><a href="/create">Create timetable</a></li>
+      <li role='presentation'><a href="/show">Show timetable</a></li>
 </ul>
 </template>
 <template  name="formTemplate">
@@ -60,18 +62,13 @@
 </table>
 </template>
 
+<template name="showTimeTable">
+	<input type='text' id='deptt' placeholder='department'>
+	<input type='year' id='year' placeholder='year'>
+	<button id="showBtn">Show</button>
+</template>
 
 <template name="createTimeTable">
-<!-- <label> Department </label>
-<input type="text" name="teacherTextbox" id="teacherTextbox">
-<input type="button" id="submit" value="Go">
-	<label>List of teachers</label>
-	<select name="teachers">
-		{{#each sTeacherData}}
-		<option value="{{name}}">{{name}} </option>
-		{{/each}}
-	</select>-->
-
 	<input type='text' id='deptt' placeholder='department'>
 	<input type='year' id='year' placeholder='year'>
 	<div class="column monday">

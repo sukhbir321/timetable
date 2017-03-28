@@ -3,6 +3,13 @@ action: function(){
 	BlazeLayout.render("form");
 }
 });*/
+
+FlowRouter.route('/show', {
+action: function(){
+	BlazeLayout.render('showTimeTable');
+}
+});
+
 FlowRouter.route('/formTemplate',{
 action: function(){
 	BlazeLayout.render("formTemplate");

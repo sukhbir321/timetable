@@ -160,7 +160,6 @@ Session.set('choosendeptt', choosendeptt);
 
 'click #createBtn':function(){
 	 timetabl=  { monday: [], tuesday: [], wednesday: [], thrusday: [], friday: [] };
-	var data = { department: "", year: "", timetable : timetabl };
 	var mondays = $(".monday input");
 	var i=0;
 	mondays.each(function(){ 
@@ -170,43 +169,51 @@ Session.set('choosendeptt', choosendeptt);
 	});
 
 
-	var mondays = $(".tuesday input");
+	var tuesdays = $(".tuesday input");
 	var i=0;
-	mondays.each(function(){ 
+	tuesdays.each(function(){ 
 		var val = $(this).val();
 		timetabl.tuesday[i] = val;
 		i++;
 	});
 
 
-	var mondays = $(".wednesday input");
+	var wednesdays = $(".wednesday input");
 	var i=0;
-	mondays.each(function(){ 
+	wednesdays.each(function(){ 
 		var val = $(this).val();
 		timetabl.wednesday[i] = val;
 		i++;
 	});
 
-	var mondays = $(".thrusday input");
+	var thursdays = $(".thrusday input");
 	var i=0;
-	mondays.each(function(){ 
+	thursdays.each(function(){ 
 		var val = $(this).val();
 		timetabl.thrusday[i] = val;
 		i++;
 	});
 
 
-	var mondays = $(".friday input");
+	var fridays = $(".friday input");
 	var i=0;
-	mondays.each(function(){ 
+	fridays.each(function(){ 
 		var val = $(this).val();
 		timetabl.friday[i] = val;
 		i++;
 	});
 
+	var data = { department: "", year: "", timetable : timetabl };
 	data.department = $("#deptt").val();
-	data.department = $('#year').val();
-	timetable.insert(data);
+	data.year = $('#year').val();
+	
+	var existing = timetable.find({department:data.department, year:data.year}).fetch();
+
+	if(existing.length){
+		timetable.update({_id:existing[0]._id}, {$set:{timetable:data.timetable}});
+	} else{
+		timetable.insert(data);
+	}
 	
 }
 
@@ -216,4 +223,8 @@ Template.createTimeTable.helpers({
 var a= Session.get('choosendeptt');
 return teacher.find({department:a});
 }
+});
+
+Template.showTimeTable.events({
+	
 });
