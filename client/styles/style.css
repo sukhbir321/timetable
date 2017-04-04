@@ -1,0 +1,22 @@
+.columns{
+    width:300px;
+    height: 350px;
+    overflow: hidden;
+}
+
+.columns-wrapper{
+    width:800%;
+    position: relative;
+    left:0%;
+    transition: 0.2s all ease;
+}
+
+.column{
+    width: 300px;
+    height: 350px;
+    float: left;
+}
+
+.column input{
+    margin:10px;
+}

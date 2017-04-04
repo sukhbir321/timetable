@@ -13,12 +13,14 @@ console.log(shortname);
 }
 });
 Meteor.methods({
-'subject':function(name,deptt,code,shortname){
+'subject':function(name,deptt,code,shortname, year, teacher){
 subject.insert({
         name:name,
         department:deptt,
         code:code,
-        shortname:shortname
+        shortname:shortname,
+        year: year,
+        teacher: teacher
     });
 console.log(name);
 console.log(deptt);

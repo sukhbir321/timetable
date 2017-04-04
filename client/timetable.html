@@ -1,10 +1,64 @@
-<template name='timetable'>
-<table>
-<tr>
-<th>type </th>
-<th>subject </th>
-</tr>
-<td> <input type="text"> </td>
-<td> <input type="text"></td>
-</table>
+<template name="showTimeTable">
+    <input type='number' id='year' placeholder='year'>
+    <button id="showBtn">Show</button>
+</template>
+
+<template name="createTimeTable">
+    <input type='number' id='year' placeholder='year'>
+    <div class="columns">
+        <div class="columns-wrapper">
+            <div class="column monday">
+                <p>Monday</p>
+                <input type="text">
+                <input type="text">
+                <input type="text">
+                <input type="text">
+                <input type="text">
+                <input type="text">
+                <input type="text">
+            </div>
+            <div class="column tuesday">
+                <p>Tuesday</p>
+                <input type="text">
+                <input type="text">
+                <input type="text">
+                <input type="text">
+                <input type="text">
+                <input type="text">
+                <input type="text">
+            </div>
+            <div class="column wednesday">
+                <p>Wednesday</p>
+                <input type="text">
+                <input type="text">
+                <input type="text">
+                <input type="text">
+                <input type="text">
+                <input type="text">
+                <input type="text">
+            </div>
+            <div class="column thrusday">
+                <p>Thrusday</p>
+                <input type="text">
+                <input type="text">
+                <input type="text">
+                <input type="text">
+                <input type="text">
+                <input type="text">
+                <input type="text">
+            </div>
+            <div class="column friday">
+                <p>Friday</p>
+                <input type="text">
+                <input type="text">
+                <input type="text">
+                <input type="text">
+                <input type="text">
+                <input type="text">
+                <input type="text">
+            </div>
+        </div>
+    </div>
+    <button id="nextBtn">></button>
+    <button id="createBtn">Create</button>
 </template>
