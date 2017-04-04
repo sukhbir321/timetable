@@ -18,7 +18,8 @@ Template.formTemplate.events({
 });
 Template.formTemplate.helpers({
     teacherData:function(){
-        return teacher.find();
+        var deptt = Session.get("DEPARTMENT_NAME");
+        return teacher.find({department:deptt});
     }
 });
 Template.subject.events({
@@ -40,7 +41,8 @@ Template.subject.events({
 });
 Template.subject.helpers({
     subjectData:function(){
-        return subject.find();
+        var deptt = Session.get("DEPARTMENT_NAME");
+        return subject.find({department: deptt});
     },
     teachersData:function(){
         var deptt = Session.get('DEPARTMENT_NAME');
