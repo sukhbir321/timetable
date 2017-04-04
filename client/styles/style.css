@@ -1,6 +1,5 @@
 .columns{
     width:300px;
-    height: 350px;
     overflow: hidden;
 }
 
@@ -13,10 +12,13 @@
 
 .column{
     width: 300px;
-    height: 350px;
     float: left;
 }
 
-.column input{
+.column select{
     margin:10px;
+}
+
+.column select{
+    display: block;
 }

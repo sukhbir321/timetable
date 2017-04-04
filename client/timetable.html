@@ -1,5 +1,5 @@
 <template name="showTimeTable">
-    <input type='number' id='year' placeholder='year'>
+    <input type='number' id='yearinShow' placeholder='year'>
     <button id="showBtn">Show</button>
 </template>
 
@@ -9,13 +9,54 @@
         <div class="columns-wrapper">
             <div class="column monday">
                 <p>Monday</p>
-                <input type="text">
-                <input type="text">
-                <input type="text">
-                <input type="text">
-                <input type="text">
-                <input type="text">
-                <input type="text">
+                <label>Lecture 1</label>
+                <select>
+                    {{#each sSubjectData}}
+                    <option>{{name}}</option>
+                    {{/each}}
+                </select>   
+                <label>Lecture 2</label>
+                <select>
+                    {{#each sSubjectData}}
+                    <option>{{name}}</option>
+                    {{/each}}
+                </select>   
+                <label>Lecture 3</label>
+                <select>
+                    {{#each sSubjectData}}
+                    <option>{{name}}</option>
+                    {{/each}}
+                </select>   
+                <label>Lecture 4</label>
+                <select>
+                    {{#each sSubjectData}}
+                    <option>{{name}}</option>
+                    {{/each}}
+                </select>   
+                <label>Lecture 5</label>
+                <select>
+                    {{#each sSubjectData}}
+                    <option>{{name}}</option>
+                    {{/each}}
+                </select>   
+                <label>Lecture 6</label>
+                <select>
+                    {{#each sSubjectData}}
+                    <option>{{name}}</option>
+                    {{/each}}
+                </select>   
+                <label>Lecture 7</label>
+                <select>
+                    {{#each sSubjectData}}
+                    <option>{{name}}</option>
+                    {{/each}}
+                </select>
+                <label>Lecture 8</label>
+                <select>
+                    {{#each sSubjectData}}
+                    <option>{{name}}</option>
+                    {{/each}}
+                </select>   
             </div>
             <div class="column tuesday">
                 <p>Tuesday</p>

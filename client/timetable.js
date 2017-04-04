@@ -17,7 +17,7 @@ Template.createTimeTable.events({
 
     'click #createBtn':function(){
         timetabl =  { monday: [], tuesday: [], wednesday: [], thrusday: [], friday: [] };
-        var mondays = $(".monday input");
+        var mondays = $(".monday select");
         var i=0;
         mondays.each(function(){ 
             var val = $(this).val();
@@ -76,12 +76,18 @@ Template.createTimeTable.events({
 
 });
 Template.createTimeTable.helpers({
-    'sTeacherData':function(){
-        var a= Session.get('choosendeptt');
-        return teacher.find({department:a});
-    }
+    'sSubjectData':function(){
+        var a= Session.get("DEPARTMENT_NAME");
+        return subject.find({department:a});
+    },
 });
 
 Template.showTimeTable.events({
-
+    'click #showBtn':function(){
+        var year = $('#yearinShow').val();
+        var deptt = Session.get("DEPARTMENT_NAME");
+        
+        var show = timetable.find({department: deptt, year: year}).fetch();
+        console.log(show);
+    }
 });
