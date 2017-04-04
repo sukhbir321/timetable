@@ -26,7 +26,7 @@ Template.createTimeTable.events({
         });
 
 
-        var tuesdays = $(".tuesday input");
+        var tuesdays = $(".tuesday select");
         var i=0;
         tuesdays.each(function(){ 
             var val = $(this).val();
@@ -35,7 +35,7 @@ Template.createTimeTable.events({
         });
 
 
-        var wednesdays = $(".wednesday input");
+        var wednesdays = $(".wednesday select");
         var i=0;
         wednesdays.each(function(){ 
             var val = $(this).val();
@@ -43,7 +43,7 @@ Template.createTimeTable.events({
             i++;
         });
 
-        var thursdays = $(".thrusday input");
+        var thursdays = $(".thrusday select");
         var i=0;
         thursdays.each(function(){ 
             var val = $(this).val();
@@ -52,7 +52,7 @@ Template.createTimeTable.events({
         });
 
 
-        var fridays = $(".friday input");
+        var fridays = $(".friday select");
         var i=0;
         fridays.each(function(){ 
             var val = $(this).val();
@@ -86,8 +86,26 @@ Template.showTimeTable.events({
     'click #showBtn':function(){
         var year = $('#yearinShow').val();
         var deptt = Session.get("DEPARTMENT_NAME");
-        
-        var show = timetable.find({department: deptt, year: year}).fetch();
-        console.log(show);
+
+        var show = timetable.find({department: deptt, year: year}).fetch()[0];
+
+        var tableString = "<p>Monday</p><table><tr>";
+        var teachers = teacher.find({department: deptt}).fetch();
+        for(tchr of teachers){
+            var name = tchr.shortname;
+            tableString += "<td>"+name+"</td>";
+        }
+        tableString += "</tr>";
+
+        for(lecture1 in show.timetable){
+            var lecture = show.timetable[lecture1][0];
+            var teacherAlloted = subject.find({shortname: lecture, department: deptt}).fetch();
+            if(teacherAlloted.length){
+                var code = teacherAlloted[0].teacher;
+                console.log(code);
+            }
+        }
+
+        $('.timetable').html(tableString);
     }
 });

@@ -1,196 +1,93 @@
 <head>
-    <title>timetable</title>
+    <title>Timetable</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 </head>
 
 <body>
-    {{> form}}
+    {{>navigation}}
 </body>
 
-<template name="form">
-    <ul class="nav nav-pills nav-justified navbar-fixed-top">
-        <li role="presentation"><a href="/formTemplate">Insert teacher</a></li>
-        <li role="presentation"><a href="/subject">Insert subject</a></li>
-        <li role="presentation"><a href="/room">Insert room</a></li>
-        <li role="presentation"><a href="/create">Create timetable</a></li>
-        <li role='presentation'><a href="/show">Show timetable</a></li>
-    </ul>
-    Department<input type="text" name="deptt" id="depttInForm">
+<template name="navigation">
+    <div class="top-container">
+        <ul class="navigation">
+            <li role="presentation"><a href="/">Home</a></li>
+            <li role="presentation"><a href="/formTemplate">Insert teacher</a></li>
+            <li role="presentation"><a href="/subject">Insert subject</a></li>
+            <li role="presentation"><a href="/create">Create timetable</a></li>
+            <li role='presentation'><a href="/show">Show timetable</a></li>
+        </ul>
+        <div class="departmentInput">
+            <select id="depttInForm">
+                <option value="-">--</option>
+                <option value="cse">Computer Science</option>
+                <option value="mech">Mechanical</option>
+            </select>
+        </div>
+    </div>
 </template>
 
 <template  name="formTemplate">
-    <form class="form">
-        <label> teacher </label>
-        Name<input type="text" name="teachername" required>
-        code<input type="number" name="code" required>
-        shortname<input type="text" name="shortname" required>
-        <input type="submit" id="submit"/>
-    </form>
-    <table>
-        {{#each teacherData}}
-        <tr>
-            <td  style="border:1px solid #000;">{{name}}</td>
-            <td style="border:1px solid #000;">{{department}}</td>
-            <td style="border:1px solid #000;">{{shortname}}</td>
-            <td style="border:1px solid #000;">{{code}}</td>
-        </tr>
-        {{/each}}
-    </table>
+    <div class="animated fadeIn container">
+        <h2 class="subheading">Teachers</h2>
+        <form class="form">
+            Name<input type="text" name="teachername" required>
+            code<input type="number" name="code" required>
+            shortname<input type="text" name="shortname" required>
+            <input type="submit" id="submit"/>
+        </form>
+        <table class="dataR">
+            <tr>
+                <th>Name</th>
+                <th>Department</th>
+                <th>Short name</th>
+                <th>Code</th>
+            </tr>
+            {{#each teacherData}}
+            <tr>
+                <td  style="border:1px solid #000;">{{name}}</td>
+                <td style="border:1px solid #000;">{{department}}</td>
+                <td style="border:1px solid #000;">{{shortname}}</td>
+                <td style="border:1px solid #000;">{{code}}</td>
+            </tr>
+            {{/each}}
+        </table>
+    </div>
 </template>
 
 <template name="subject">
-    <form class="form">
-        <label> subject </label>
-
-        Name<input type="text" name="subjectname" required>
-        code<input type="number" name="code" required>
-        year <input type="number" name="year" required>
-        shortname<input type="text" name="shortname" required>
-        <select name="teacherName">
+    <div class="animated fadeIn container">
+        <h2 class="subheading">Subjects</h2>
+        <form class="form">
+            Name<input type="text" name="subjectname" required>
+            Code<input type="number" name="code" required>
+            Year <input type="number" name="year" required>
+            Shortname<input type="text" name="shortname" required>
+            Teacher<select name="teacherName">
             {{#each teachersData}}
             <option value="{{shortname}}">{{name}}</option>
             {{/each}}
-        </select>
-        <input type="submit" id="submit"/>
-    </form>
-    <table>
-        {{#each subjectData}}
-        <tr>
-            <td>{{name}}</td>
-            <td>{{department}}</td>
-            <td>{{shortname}}</td>
-            <td>{{code}}</td>
-        </tr>
-        {{/each}}
-    </table>
-</template>
-
-<template name="room">
-    <form id="form" class="form-control half-width-input">
-        <label> room </label>
-
-        number<input type="varchar" name="roomnumber" class="half-width-input" required>
-
-        Type<input type="text" name="type" class="half-width-input" required>
-        <input type="submit" id="submit" class="btn btn-raised btn-primary">
-
-    </form>
-    <table>
-        {{#each roomData}}
-        <tr>
-            <td  style="border:1px solid #000;">{{room}}</td>
-            <td style="border:1px solid #000;">{{department}}</td>
-            <td style="border:1px solid #000;">{{type}} </td>
-        </tr>
-        {{/each}}
-    </table>
-</template>
-
-<template name="calldeptt">
-    <form>
-        <label>List of deptt</label>
-        <select name="deptt">
-            <option> </option>
-            <option> </option>
-            {{#each roominfo}}
-            <option value="{{department}}">{{department}} </option>
+            </select>
+            <input type="submit" id="submit"/>
+        </form>
+        <table class="dataR">
+            <tr>
+                <th>Name</th>
+                <th>Department</th>
+                <th>Short name</th>
+                <th>Code</th>
+                <th>Year</th>
+                <th>Teacher</th>
+            </tr>
+            {{#each subjectData}}
+            <tr>
+                <td>{{name}}</td>
+                <td>{{department}}</td>
+                <td>{{shortname}}</td>
+                <td>{{code}}</td>
+                <td>{{year}}</td>
+                <td>{{teacher}}</td>
+            </tr>
             {{/each}}
-        </select>
-    </form>
-</template>
-
-<template name="callcode">
-    <form>
-        <label>List of code</label>
-        <select name="code">
-            <option> </option>
-            <option> </option>
-            {{#each roominfo}}
-            <option value="{{code}}">{{code}} </option>
-            {{/each}}
-        </select>
-    </form>
-</template>
-
-<template name="callshortname">
-    <form>
-        <label>List of shortname</label>
-        <select name="shortname">
-            <option> </option>
-            <option> </option>
-            {{#each roominfo}}
-            <option value="{{shortname}}">{{shortname}} </option>
-            {{/each}}
-        </select>
-    </form>
-</template>
-
-<template name="calltype">
-    <form>
-        <label> list of types </label>
-        <select name="type">
-            <option>class </option>
-            <option>lab </option>
-            {{#each typeinfo}}
-            <option value="{{type}}">{{type}} </option>
-            {{/each}}
-        </select>
-    </form>
-</template>
-
-
-<template name="sr">
-    <form class="form">
-        <label> sr</label>
-        subject<input type="text" name="subject" required>
-        type<input tye="text" name="type" required>
-        room<input type="text" name="room" required>
-        <input type="submit" id="submit" required>
-    </form>
-    <table>
-        {{#each srData}}
-        <tr>
-            <td  style="border:1px solid #000;">{{subject}}</td>
-            <td style="border:1px solid #000;">{{room}}</td>
-            <td style="border:1px solid #000;">{{type}} </td>
-        </tr>
-        {{/each}}
-    </table>
-</template>
-<template name="ts">
-    <form class="form">
-        <label> ts</label>
-        teacher<input type="text" name="teacher" required>
-        code<input tye="text" name="code" required>
-        subject<input type="text" name="subject" required>
-        <input type="submit" id="submit"/>
-    </form>
-    <table>
-        {{#each tsData}}
-        <tr>
-            <td  style="border:1px solid #000;">{{teacher}}</td>
-            <td style="border:1px solid #000;">{{code}}</td>
-            <td style="border:1px solid #000;">{{subject}} </td>
-        </tr>
-        {{/each}}
-    </table>
-</template>
-
-<template name="roomalot">
-    <form class="form">
-        <div id="each" class="container">
-
-            <table class="table table-bordered ">
-                <label> room alot</label>
-                <tr> <th> type</th> <th> subject</th></tr>
-                {{#each table}}
-                <tr class="table table-bordered">
-                    <td>type<input tye="text" id="type{{this._id}}" value="{{type}}" /></td>
-                    <td>subject<input type="text" id="subject{{this._id}}" value="{{subject}}"/></td>
-                    <input type="submit" id="submit"/>
-                </tr>
-                {{/each}}
-            </table>
-        </div>
-    </form>
-    {{> calltype}}
+        </table>
+    </div>
 </template>

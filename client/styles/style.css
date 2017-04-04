@@ -1,6 +1,130 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html,body{
+    width: 100%;
+    height: 100%;
+}
+
+body{
+    font-family: 'Lato', sans-serif;
+    background: url('/background.jpg');
+    background-size: cover;
+    background-position: top;
+    color: white;
+}
+
+input{
+    border: none;
+    border-bottom: 1px solid #333;
+}
+
+input:focus{
+    outline: none;
+}
+
+.subheading{
+    text-align: center;
+    margin:-30px 0px 30px 0px;
+}
+
+.top-container{
+    background: white;
+    padding:10px;
+}
+
+.navigation {
+    float:right;
+}
+
+.navigation li{
+    display:inline;
+    padding-left:30px;
+}
+
+.navigation li a{
+    text-decoration: none;
+    color: white;
+    padding: 20px;
+    background-color: #470000;
+    transition: 0.25s all ease;
+    border-radius: 10px;
+}
+
+.navigation li a:hover{
+    padding-bottom: 25px;
+}
+
+.container{
+    background:#fff;
+    max-width:800px;
+    height: 100%;
+    margin: auto;
+    margin-top: 50px;
+    color: black;
+    padding: 100px 50px 50px 50px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+input{
+    font-size: 16px;
+    text-indent: 5px;
+}
+
+input[type=submit]{
+    width:120px;
+    height: 50px;
+    margin: auto;
+    text-align: center;
+    background: #470000;
+    display: block;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    text-indent: 0px;
+}
+
+.form input, .form select{
+    display: block;
+    margin-top:5px;
+    margin-bottom: 25px;
+}
+
+.form{
+    float: left;
+}
+
+.dataR{
+    float: right;
+}
+
+.container::after{
+    display: block;
+    content: "";
+    clear: both;
+}
 .columns{
     width:300px;
     overflow: hidden;
+}
+
+th, td{
+    border: 1px solid #333;
+}
+th{
+    padding-left: 5px;
+    padding-right: 5px;
+}
+td{
+    padding:5px;
+}
+
+table{
+    margin-top:30px;
+    margin-top:30px;
 }
 
 .columns-wrapper{

@@ -1,8 +1,8 @@
-/*FlowRouter.route('/',{
+FlowRouter.route('/',{
 action: function(){
-	BlazeLayout.render("form");
+	BlazeLayout.render("home");
 }
-});*/
+});
 
 FlowRouter.route('/show', {
 action: function(){
