@@ -21,8 +21,11 @@ Template.createTimeTable.events({
         var i=0;
         mondays.each(function(){ 
             var val = $(this).val();
-            timetabl.monday[i] = val;
-            i++;
+            var subj = subject.find({name:val}).fetch();
+            if(subj.length){
+                timetabl.monday[i] = {subject: val, teacher:subj[0].teacher};
+                i++;
+            }
         });
 
 
@@ -30,8 +33,11 @@ Template.createTimeTable.events({
         var i=0;
         tuesdays.each(function(){ 
             var val = $(this).val();
-            timetabl.tuesday[i] = val;
-            i++;
+            var subj = subject.find({name:val}).fetch();
+            if(subj.length){
+                timetabl.tuesday[i] = {subject: val, teacher:subj[0].teacher};
+                i++;
+            }
         });
 
 
@@ -39,16 +45,23 @@ Template.createTimeTable.events({
         var i=0;
         wednesdays.each(function(){ 
             var val = $(this).val();
-            timetabl.wednesday[i] = val;
-            i++;
+            var subj = subject.find({name:val}).fetch();
+            if(subj.length){
+                timetabl.wednesday[i] = {subject: val, teacher:subj[0].teacher};
+                i++;
+            }
         });
 
         var thursdays = $(".thrusday select");
         var i=0;
         thursdays.each(function(){ 
             var val = $(this).val();
-            timetabl.thrusday[i] = val;
-            i++;
+            var subj = subject.find({name:val}).fetch();
+            if(subj.length){
+                timetabl.thrusday[i] = {subject: val, teacher:subj[0].teacher};
+                i++;
+            }
+
         });
 
 
@@ -56,8 +69,12 @@ Template.createTimeTable.events({
         var i=0;
         fridays.each(function(){ 
             var val = $(this).val();
-            timetabl.friday[i] = val;
-            i++;
+            var subj = subject.find({name:val}).fetch();
+            if(subj.length){
+                timetabl.friday[i] = {subject: val, teacher:subj[0].teacher};
+                i++;
+            }
+
         });
 
         var data = { department: "", year: "", timetable : timetabl };
@@ -93,18 +110,75 @@ Template.showTimeTable.events({
         var teachers = teacher.find({department: deptt}).fetch();
         for(tchr of teachers){
             var name = tchr.shortname;
-            tableString += "<td>"+name+"</td>";
+            tableString += "<th>"+name+"</th>";
+        }
+        tableString += "</tr><tr><td colspan=75%>Monday</td></tr><tr>";
+
+        var lectures = show.timetable.monday;
+        for(k=0; k<lectures.length; k++){
+            for(l=0; l<teachers.length; l++){
+                if(lectures[k].teacher == teachers[l].shortname){
+                    tableString += "<td>"+lectures[k].subject+"</td>";
+                }else{
+                    tableString += "<td>--</td>";
+                }
+            }
+            tableString += "</tr><tr>"
+        }
+        tableString += "</tr><tr><td colspan=75%>Tuesday</td></tr><tr>";
+
+        var lectures = show.timetable.tuesday;
+        for(k=0; k<lectures.length; k++){
+            for(l=0; l<teachers.length; l++){
+                if(lectures[k].teacher == teachers[l].shortname){
+                    tableString += "<td>"+lectures[k].subject+"</td>";
+                }else{
+                    tableString += "<td>--</td>";
+                }
+            }
+            tableString += "</tr><tr>"
+        }
+        tableString += "</tr><tr><td colspan=75%>Wednesday</td></tr><tr>";
+
+        var lectures = show.timetable.wednesday;
+        for(k=0; k<lectures.length; k++){
+            for(l=0; l<teachers.length; l++){
+                if(lectures[k].teacher == teachers[l].shortname){
+                    tableString += "<td>"+lectures[k].subject+"</td>";
+                }else{
+                    tableString += "<td>--</td>";
+                }
+            }
+            tableString += "</tr><tr>"
+        }
+        tableString += "</tr><tr><td colspan=75%>Thrusday</td></tr><tr>";
+
+        var lectures = show.timetable.thrusday;
+        for(k=0; k<lectures.length; k++){
+            for(l=0; l<teachers.length; l++){
+                if(lectures[k].teacher == teachers[l].shortname){
+                    tableString += "<td>"+lectures[k].subject+"</td>";
+                }else{
+                    tableString += "<td>--</td>";
+                }
+            }
+            tableString += "</tr><tr>"
+        }
+        tableString += "</tr><tr><td colspan=75%>Friday</td></tr><tr>";
+
+        var lectures = show.timetable.friday;
+        for(k=0; k<lectures.length; k++){
+            for(l=0; l<teachers.length; l++){
+                if(lectures[k].teacher == teachers[l].shortname){
+                    tableString += "<td>"+lectures[k].subject+"</td>";
+                }else{
+                    tableString += "<td>--</td>";
+                }
+            }
+            tableString += "</tr><tr>"
         }
         tableString += "</tr>";
 
-        for(lecture1 in show.timetable){
-            var lecture = show.timetable[lecture1][0];
-            var teacherAlloted = subject.find({shortname: lecture, department: deptt}).fetch();
-            if(teacherAlloted.length){
-                var code = teacherAlloted[0].teacher;
-                console.log(code);
-            }
-        }
 
         $('.timetable').html(tableString);
     }
